@@ -105,6 +105,12 @@ cleaned_matched_data <- cleaned_matched_data %>%
 cleaned_matched_data <- cleaned_matched_data %>%
   mutate(denominator = metro_income / sum_households)
 
+# Create a new column ratio as postal_income / denominator
+cleaned_matched_data <- cleaned_matched_data %>%
+  mutate(ratio = postal_income / denominator)
+
 # View the cleaned data
 View(cleaned_matched_data)
 
+# Save the cleaned data to a CSV file
+write_csv(cleaned_matched_data, "Cleaned_ACSST5Y2023_S1902_Data.csv")
